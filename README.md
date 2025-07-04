@@ -47,10 +47,10 @@ Transform your coding workflow by giving Claude Desktop full control over your V
 
 ```bash
 # Windows (PowerShell as Administrator)
-curl -fsSL https://raw.githubusercontent.com/your-username/claude-vscode-controller/main/install.ps1 | powershell -
+curl -fsSL https://raw.githubusercontent.com/dar-kow/claude-vscode-controller/main/install.ps1 | powershell -
 
 # macOS/Linux
-curl -fsSL https://raw.githubusercontent.com/your-username/claude-vscode-controller/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/dar-kow/claude-vscode-controller/main/install.sh | bash
 ```
 
 ### **Option 2: Manual Installation**
