@@ -3,7 +3,7 @@
 # Claude VSCode Controller - One-Click Unix/Linux/macOS Installer
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/your-username/claude-vscode-controller/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/dar-kow/claude-vscode-controller/main/install.sh | bash
 #
 # Options:
 #   INSTALL_PATH - Installation directory (default: ~/claude-vscode-controller)
@@ -18,7 +18,7 @@ INSTALL_PATH="${INSTALL_PATH:-$HOME/claude-vscode-controller}"
 FORCE="${FORCE:-0}"
 NO_START="${NO_START:-0}"
 BRANCH="${BRANCH:-main}"
-REPO_URL="https://github.com/your-username/claude-vscode-controller.git"
+REPO_URL="https://github.com/dar-kow/claude-vscode-controller.git"
 
 # Colors
 RED='\033[0;31m'
@@ -58,7 +58,7 @@ cleanup() {
     if [ $? -ne 0 ]; then
         log_error "Installation failed!"
         log_info "Check the logs above for details"
-        log_info "For help, visit: https://github.com/your-username/claude-vscode-controller/issues"
+        log_info "For help, visit: https://github.com/dar-kow/claude-vscode-controller/issues"
     fi
 }
 
@@ -342,7 +342,7 @@ fi
 
 echo ""
 echo -e "${CYAN}Need help? Check the README.md or create an issue on GitHub!${NC}"
-echo "GitHub: https://github.com/your-username/claude-vscode-controller"
+echo "GitHub: https://github.com/dar-kow/claude-vscode-controller"
 
 # Remove trap to indicate successful completion
 trap - EXIT

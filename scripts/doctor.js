@@ -393,7 +393,7 @@ class DiagnosticTool {
         }
 
         console.log('\n');
-        log.info('For more help, visit: https://github.com/your-username/claude-vscode-controller/issues');
+        log.info('For more help, visit: https://github.com/dar-kow/claude-vscode-controller/issues');
     }
 
     suggestFix(issue) {

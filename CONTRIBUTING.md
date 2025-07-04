@@ -22,7 +22,7 @@ Thank you for your interest in contributing! This project aims to revolutionize 
 
 1. **Fork & Clone**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/claude-vscode-controller.git
+   git clone https://github.com/dar-kow/claude-vscode-controller.git
    cd claude-vscode-controller
    ```
 

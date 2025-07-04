@@ -5,7 +5,7 @@
 .DESCRIPTION
     Automatically installs and configures Claude VSCode Controller with all dependencies
 .EXAMPLE
-    curl -fsSL https://raw.githubusercontent.com/your-username/claude-vscode-controller/main/install.ps1 | powershell -
+    curl -fsSL https://raw.githubusercontent.com/dar-kow/claude-vscode-controller/main/install.ps1 | powershell -
 #>
 
 param(
@@ -36,7 +36,8 @@ function Test-Command($Command) {
     try {
         Get-Command $Command -ErrorAction Stop | Out-Null
         return $true
-    } catch {
+    }
+    catch {
         return $false
     }
 }
@@ -89,7 +90,8 @@ if (Test-Path $InstallPath) {
     if ($Force) {
         Write-Warning "Removing existing installation..."
         Remove-Item -Path $InstallPath -Recurse -Force
-    } else {
+    }
+    else {
         Write-Error "Installation directory already exists: $InstallPath"
         Write-Warning "Use -Force parameter to overwrite existing installation"
         exit 1
@@ -104,9 +106,10 @@ Write-Success "Installation directory: $InstallPath"
 Write-Step "Downloading Claude VSCode Controller..."
 
 try {
-    git clone https://github.com/your-username/claude-vscode-controller.git . --branch $Branch --depth 1
+    git clone https://github.com/dar-kow/claude-vscode-controller.git . --branch $Branch --depth 1
     Write-Success "Repository cloned successfully"
-} catch {
+}
+catch {
     Write-Error "Failed to clone repository: $($_.Exception.Message)"
     exit 1
 }
@@ -117,7 +120,8 @@ Write-Step "Installing Node.js dependencies..."
 try {
     npm install --production
     Write-Success "Dependencies installed successfully"
-} catch {
+}
+catch {
     Write-Error "Failed to install dependencies: $($_.Exception.Message)"
     exit 1
 }
@@ -140,7 +144,8 @@ try {
     }
     
     Write-Success "Extension built successfully"
-} catch {
+}
+catch {
     Write-Error "Failed to build extension: $($_.Exception.Message)"
     exit 1
 }
@@ -164,7 +169,8 @@ try {
     Copy-Item "out" -Destination $extensionPath -Recurse -Force
     
     Write-Success "VSCode extension installed"
-} catch {
+}
+catch {
     Write-Error "Failed to install VSCode extension: $($_.Exception.Message)"
     exit 1
 }
@@ -198,9 +204,9 @@ try {
     # Add vscode-controller configuration
     $config["mcpServers"]["vscode-controller"] = @{
         command = "node"
-        args = @("$InstallPath\enhanced-mcp-server.js")
-        env = @{
-            NODE_ENV = "production"
+        args    = @("$InstallPath\enhanced-mcp-server.js")
+        env     = @{
+            NODE_ENV      = "production"
             VSCODE_BRIDGE = "enabled"
         }
     }
@@ -210,7 +216,8 @@ try {
     
     Write-Success "Claude Desktop configured"
     Write-Success "Config file: $claudeConfigPath"
-} catch {
+}
+catch {
     Write-Error "Failed to configure Claude Desktop: $($_.Exception.Message)"
     exit 1
 }
@@ -293,4 +300,4 @@ if (-not $NoStart) {
 
 Write-Host ""
 Write-Host "Need help? Check the README.md or create an issue on GitHub!" -ForegroundColor Cyan
-Write-Host "GitHub: https://github.com/your-username/claude-vscode-controller" -ForegroundColor Gray
+Write-Host "GitHub: https://github.com/dar-kow/claude-vscode-controller" -ForegroundColor Gray
