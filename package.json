@@ -1,0 +1,66 @@
+{
+  "name": "claude-vscode-controller",
+  "version": "1.0.0",
+  "description": "🤖 Control VSCode directly from Claude Desktop with 30+ powerful commands! Transform your coding workflow with natural language.",
+  "main": "enhanced-mcp-server.js",
+  "type": "module",
+  "bin": {
+    "claude-vscode-controller": "./enhanced-mcp-server.js"
+  },
+  "scripts": {
+    "start": "node enhanced-mcp-server.js",
+    "dev": "nodemon enhanced-mcp-server.js",
+    "build": "tsc -p .",
+    "build:watch": "tsc -p . --watch",
+    "setup": "npm install && npm run build && npm run install-extension && npm run configure-claude",
+    "setup:dev": "npm install && npm run build && npm run install-extension",
+    "test": "npm run test:bridge",
+    "test:bridge": "node quick-test.js",
+    "test:mcp": "node enhanced-mcp-server.js --test",
+    "test:integration": "node full-integration-test.js",
+    "doctor": "node scripts/doctor.js",
+    "configure-claude": "node scripts/configure-claude.js",
+    "clean": "rimraf out dist node_modules/.cache",
+    "lint": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dar-kow/claude-vscode-controller.git"
+  },
+  "keywords": [
+    "claude", "vscode", "ai", "assistant", "automation", "mcp", 
+    "model-context-protocol", "coding", "developer-tools", 
+    "productivity", "editor", "extension", "bridge", "websocket", 
+    "natural-language", "code-generation", "anthropic"
+  ],
+  "author": {
+    "name": "Darek",
+    "email": "darek@sdet.pl",
+    "url": "https://github.com/dar-kow"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dar-kow/claude-vscode-controller/issues"
+  },
+  "homepage": "https://github.com/dar-kow/claude-vscode-controller#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0",
+    "vscode": "^1.80.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "ws": "^8.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "@types/ws": "^8.5.0",
+    "typescript": "^5.8.3",
+    "nodemon": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.0"
+  }
+}
