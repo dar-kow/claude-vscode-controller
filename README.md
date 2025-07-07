@@ -2,6 +2,14 @@
 
 > **Control VSCode directly from Claude Desktop with 30+ powerful commands!**
 
+## 🐧 **Linux Users - Special Branch Available!**
+
+**✨ NEW: Full Linux Ubuntu 24+ support!** 🎉
+
+🔗 **[→ Linux Branch (Ubuntu 24+)](https://github.com/dar-kow/claude-vscode-controller/tree/linux)** - Optimized for Linux with Extension Host fixes  
+📖 **[→ Linux Success Story](./SUKCES_LINUX.md)** - See how we conquered Linux Extension Host crashes!  
+🛠️ **[→ Linux Installation Guide](./LINUX.md)** - Step-by-step Linux setup instructions
+
 Transform your coding workflow by giving Claude Desktop full control over your VSCode editor. Create files, edit code, manage extensions, run terminals, and more - all through natural language commands.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
