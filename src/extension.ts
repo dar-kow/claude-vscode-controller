@@ -1,7 +1,10 @@
 import * as vscode from 'vscode';
-import { WebSocketServer, WebSocket } from 'ws';
 
-let wss: WebSocketServer | null = null;
+// Import types for TypeScript, use require for runtime to avoid Extension Host issues on Linux
+import type { WebSocketServer as WSServer, WebSocket as WS } from 'ws';
+const { WebSocketServer, WebSocket } = require('ws');
+
+let wss: WSServer | null = null;
 let statusBarItem: vscode.StatusBarItem;
 
 export function activate(context: vscode.ExtensionContext) {
@@ -30,13 +33,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 function startMCPBridge() {
     try {
-        wss = new WebSocketServer({ port: 3333 });
+        const wsServer = new WebSocketServer({ port: 3333 });
+        wss = wsServer; // Store reference for cleanup
         
-        wss.on('connection', (ws) => {
+        wsServer.on('connection', (ws: WS) => {
             console.log('🔌 Claude MCP connected!');
             statusBarItem.text = "$(robot) Claude MCP: Online";
             
-            ws.on('message', (data) => {
+            ws.on('message', (data: any) => {
                 try {
                     const command = JSON.parse(data.toString());
                     handleCommand(command, ws);
@@ -67,7 +71,7 @@ function stopMCPBridge() {
     }
 }
 
-async function handleCommand(command: any, ws: WebSocket) {
+async function handleCommand(command: any, ws: WS) {
     console.log('📨 Received command:', command.method);
     
     let result: any;
